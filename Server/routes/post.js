@@ -52,6 +52,59 @@ router.get('/myposts',requireLogin,(req,res)=>{
 })
 
 
+router.put('/like',requireLogin, async(req,res)=>{
+    try{
+   const result = await Post.findByIdAndUpdate(req.body.postId,{
+        $push:{likes:req.user._id}
+    },{
+        new:true
+    }).exec()
+
+    res.json(result)
+}
+catch(err){
+    console.log("Error", err)
+}
+})
+
+router.put('/unlike',requireLogin, async(req,res)=>{
+
+    try{
+    const result= await Post.findByIdAndUpdate(req.body.postId,{
+        $pull:{likes:req.user._id}
+    },{
+        new:true
+    }).exec()
+
+    res.json(result)
+    }
+    catch(err){
+        console.log("Error", err)
+    }
+})
+
+router.put('/comment',requireLogin,async (req,res)=>{
+
+    try{
+    const comment={
+        text:req.body.text,
+        postedBy:req.user._id
+    }
+   const result = await Post.findByIdAndUpdate(req.body.postId,{
+        $push:{comments:comment}
+    },{
+        new:true
+    })
+    .populate("comments.postedBy","_id name")
+    .exec()
+   res.json(result)
+}
+catch(err){
+    console.log("Error", err)
+}
+})
+
+
 
 
 module.exports= router

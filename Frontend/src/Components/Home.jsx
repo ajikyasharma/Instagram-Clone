@@ -5,7 +5,6 @@ import PostCards from './PostCards'
 function Home() {
 
   const [data, setData]= useState([])
-     console.log(data)
 
   useEffect(()=>{
      
@@ -20,6 +19,9 @@ function Home() {
            setData(result)
           
      })
+      .catch(err=>{
+        console.log("Error", err)
+      })
   },[])
 
   return <div >
