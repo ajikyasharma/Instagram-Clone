@@ -9,8 +9,8 @@ import Layout from '../Layout.jsx'
 import Profile from './Components/Profile.jsx'
 import Home from './Components/Home.jsx'
 import CreatePost from './Components/CreatePost.jsx'
-import MyPosts from './Components/MyPosts.jsx'
 import UserProfile from './Components/UserProfile.jsx'
+import FollowingsPost from './Components/FollowingsPost.jsx'
 
 const router= createBrowserRouter ([
   {
@@ -43,8 +43,8 @@ const router= createBrowserRouter ([
         element: <CreatePost />
       },
       {
-        path:'/pixpulse/myposts',
-        element: <MyPosts />
+        path:'/pixpulse/followingsposts',
+        element: <FollowingsPost />
       },
       {
         path:'/pixpulse/userprofile/:userid',

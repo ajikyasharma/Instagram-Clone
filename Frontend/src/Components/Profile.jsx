@@ -31,7 +31,7 @@ function Profile() {
     <div className='md:container md:mx-auto  px-5 lg:px-10 flex flex-col  items-center'>
         <div className='flex flex-row m-2 mr-2'>
           <div>
-              <img className='rounded-full h-24 md:h-48 lg:h-56 w-24 md:w-48 lg:w-56 ' src="https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww" />
+              <img className='rounded-full h-24 md:h-48 lg:h-56 w-24 md:w-48 lg:w-56 ' src={JSON.parse(localStorage.getItem("user")).image} />
           </div>
           <div className='flex flex-col m-5 mt-1  justify-center'>
             <p className=' text-lg md:text-2xl lg:text-3xl  md:pb-2  md:pl-2'>{JSON.parse(localStorage.getItem("user")).name}</p>

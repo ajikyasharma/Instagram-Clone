@@ -7,14 +7,40 @@ function SignUp() {
     const [email,setEmail] = useState('')
     const [name, setName]= useState('')
     const [password, setPassword] = useState('')
+    const [image, setImage]= useState('')
+    const [url, setUrl]= useState(undefined)
 
     const navigate= useNavigate()
 
-   const submitHandler= (e)=>{
-          
+    const  postDetails = ()=>{
+      const data= new FormData()
+      data.append("file", image)
+      data.append("upload_preset","instagram-clone")
+      data.append("cloud_name", "dgl7lo1ny")
+     fetch("https://api.cloudinary.com/v1_1/dgl7lo1ny/image/upload",{
+       method:"post",
+       body:data
+     })
+     .then(res=>res.json())
+     .then(data=>{
+      comsole.log(data)
+        setUrl(data.url)
 
+     })
+     .catch(err=>{
+       console.log("Error", err)
+     })
+
+
+ }
+
+   const submitHandler= (e)=>{
          e.preventDefault()
-         console.log(name, email, password)
+         if(url == undefined)
+         {
+            postDetails()
+         }
+         console.log(name, email, password,url)
          fetch('http://localhost:3000/signup',{
           method:"post",
             headers:{
@@ -23,7 +49,8 @@ function SignUp() {
             body:JSON.stringify({
                name,
                email,
-               password
+               password,
+               pic:url
             })
          })
          .then(res=>res.json())
@@ -59,6 +86,21 @@ function SignUp() {
               <br></br>
               <input type="password" className='w-full border h-10 p-2 my-2 rounded-md outline-none' placeholder='Password' value={password} onChange={(e)=>setPassword(e.target.value)} />
               <br></br>
+              <p className='p-2 my-2'>Upload Your Image</p>
+          <label class="block">
+            <input
+              type="file"
+              className="block w-full text-lg text-slate-500
+                file:mr-4 file:py-2 file:px-4
+                file:rounded-full file:border-0
+                file:text-sm file:font-semibold
+              file:bg-pink-50 file:text-pink-700
+              hover:file:bg-pink-100
+               "
+               onChange={(e)=>setImage(e.target.files[0])}
+            />
+          </label>
+          <br></br>
               <input type="submit" className='w-full h-10 p-2 my-4 bg-pink-500 rounded-lg text-white cursor-pointer'  value="SignUp"/>
            </form>
         </div>

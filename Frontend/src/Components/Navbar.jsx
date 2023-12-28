@@ -93,7 +93,7 @@ export default function Example() {
         </NavLink>
 
 
-        <NavLink to="/pixpulse/myposts"
+        <NavLink to="/pixpulse/followingsposts"
              className={({ isActive }) =>
                `  ${
                   isActive
@@ -104,7 +104,7 @@ export default function Example() {
                 }
              >
              <div className={`py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors`}>
-               <p>My Posts</p>
+               <p>Following's Post</p>
               </div>
         </NavLink>
 
@@ -265,7 +265,7 @@ export default function Example() {
         </NavLink>
 
 
-        <NavLink to="/pixpulse/myposts"
+        <NavLink to="/pixpulse/followingsposts"
              className={({ isActive }) =>
                `  ${
                   isActive
@@ -276,7 +276,7 @@ export default function Example() {
                 }
              >
              <div className={`py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors`}>
-               <p>My Posts</p>
+               <p>Following's Post</p>
               </div>
         </NavLink>
 

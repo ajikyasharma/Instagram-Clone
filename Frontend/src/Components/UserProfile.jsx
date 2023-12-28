@@ -5,28 +5,14 @@ function UserProfile() {
    
   const [data, setData]= useState([])
   const [name,setName] = useState('')
+  const [followers, setFollowers]= useState([])
+  const [followings,setFollowings]= useState([])
   const {userid} = useParams()
+  const id= JSON.parse(localStorage.getItem("user"))._id
 
 
 
-//   useEffect(()=>{
-  
-//     fetch('http://localhost:3000/myposts',{
-//        headers :{
-//         "Authorization" :"Bearer "+ localStorage.getItem("jwt"),
-//         "Content-Type" :"application/json"
-//        }
-//     })
-//     .then(res=>res.json())
-//      .then(result => {
-//            setData(result.myposts)
-          
-//      })
-//       .catch(err=>{
-//         console.log("Error", err)
-//       })
 
-//   },[])
 
 
 useEffect(()=>{
@@ -39,20 +25,69 @@ useEffect(()=>{
      })
      .then(res=>res.json())
      .then(result =>{
-    
+        
         setData(result.posts)
         setName(result.user.name)
+        setFollowers(result.user.followers)
+        console.log(followers)
+        setFollowings(result.user.following)
+  
+
         
      })
      .catch(err=>{
         console.log("Error", err)
      })
-},[])
+},[name])
+
+const doFollow =()=>{
+    fetch('http://localhost:3000/follow',{
+      method:"put",
+      headers:{
+        "Content-Type":"application/json",
+        "Authorization":"Bearer "+localStorage.getItem("jwt")
+      },
+      body:JSON.stringify({
+         followId:userid
+      })
+    }).then(res=>res.json())
+    .then(result=>{
+       console.log(result)
+       setFollowers(result.result1.followers)
+       setFollowings(result.result1.following)
+  
+    })
+    .catch(err=>{
+      console.log("Error", err)
+    })
+}
+
+const doUnfollow =()=>{
+    fetch('http://localhost:3000/unfollow',{
+      method:"put",
+      headers:{
+        "Content-Type":"application/json",
+        "Authorization":"Bearer "+localStorage.getItem("jwt")
+      },
+      body:JSON.stringify({
+         followId:userid
+      })
+    }).then(res=>res.json())
+    .then(result=>{
+       console.log(result)
+       setFollowers(result.result1.followers)
+       setFollowings(result.result1.following)
+  
+    })
+    .catch(err=>{
+      console.log("Error", err)
+    })
+}
 
 
 
 
-  return (
+  return (  
     <div className='md:container md:mx-auto  px-5 lg:px-10 flex flex-col  items-center'>
         <div className='flex flex-row m-2 mr-2'>
           <div>
@@ -62,9 +97,15 @@ useEffect(()=>{
             <p className=' text-lg md:text-2xl lg:text-3xl  md:pb-2  md:pl-2'>{name}</p>
              <div className='flex flex-row '>
               <p className='text-md md:text-xl m-1 md:m-2'>{data.length} Posts</p>
-              <p className='text-md md:text-xl m-1 md:m-2'>40 Followers</p>
-              <p className='text-md md:text-xl m-1 md:m-2'>40 Following</p>
+              <p className='text-md md:text-xl m-1 md:m-2'>{followers.length} Followers</p>
+              <p className='text-md md:text-xl m-1 md:m-2'>{followings.length} Following</p>
+              
              </div>
+             {
+              followers.includes(id) ?  <button className='h-10  w-24 md:w-32 bg-pink-500 text-white rounded-xl mt-4' onClick={doUnfollow} >Unfollow</button> : <button className='h-10 w-24 md:w-32 bg-pink-500 text-white rounded-xl mt-4' onClick={doFollow} >follow</button>
+             }
+            
+           
           </div>
         </div>
 

@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import PostCards from './PostCards'
-// import PostCards1 from './PostCards1'
 
-function Home() {
-
+function FollowingsPost() {
+    
   const [data, setData]= useState([])
 
   useEffect(()=>{
      
-    fetch('http://localhost:3000/allposts',{
+    fetch('http://localhost:3000/followingsposts',{
        headers :{
         "Authorization" :"Bearer "+ localStorage.getItem("jwt"),
         "Content-Type" :"application/json"
@@ -38,9 +37,7 @@ function Home() {
     </div>
 
     </div>
-    
-
   
 }
 
-export default Home
+export default FollowingsPost
