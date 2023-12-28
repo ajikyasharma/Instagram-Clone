@@ -47,7 +47,7 @@ function Profile() {
 
          {
           data.map((item, idx)=>(
-                <img src={item.photo} />
+                <img className='h-48' src={item.photo} />
           ))
          }
 

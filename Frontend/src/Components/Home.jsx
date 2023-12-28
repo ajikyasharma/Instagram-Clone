@@ -30,7 +30,7 @@ function Home() {
      {
       data.map((item,idx) => (
        
-        <PostCards item={item} key={idx}/>
+        <PostCards item={item} key={idx} data={data} setData={setData}/>
       ))
      }
 

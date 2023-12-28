@@ -9,6 +9,7 @@ const requireLogin= require('../middleware/requireLogin')
 router.get('/allposts',(req,res)=>{
     Post.find()
     .populate("postedBy","_id name")
+    .populate("comments.postedBy","_id name ")
     .then(posts=>{
         res.json(posts)
     })
@@ -84,12 +85,14 @@ router.put('/unlike',requireLogin, async(req,res)=>{
 })
 
 router.put('/comment',requireLogin,async (req,res)=>{
-
+   console.log("bye")
     try{
     const comment={
         text:req.body.text,
         postedBy:req.user._id
     }
+    console.log(comment)
+    console.log(req.body.postId)
    const result = await Post.findByIdAndUpdate(req.body.postId,{
         $push:{comments:comment}
     },{
@@ -104,6 +107,11 @@ catch(err){
 }
 })
 
+
+router.delete('/deletepost/:postId', requireLogin, async(req,res)=>{
+   const result= await Post.findOneAndDelete({_id:req.params.postId})
+      return res.json(result)
+}) 
 
 
 
