@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 function Profile() {
    
@@ -28,10 +29,12 @@ function Profile() {
 
 
   return (
-    <div className='md:container md:mx-auto  px-5 lg:px-10 flex flex-col  items-center'>
+    <div className='md:container md:mx-auto  px-5 lg:px-10 flex flex-col  items-center '>
         <div className='flex flex-row m-2 mr-2'>
           <div>
-              <img className='rounded-full h-24 md:h-48 lg:h-56 w-24 md:w-48 lg:w-56 ' src={JSON.parse(localStorage.getItem("user")).image} />
+              <img className='rounded-full h-24 md:h-48  w-24 md:w-48  ' src={JSON.parse(localStorage.getItem("user")).image} />
+            
+
           </div>
           <div className='flex flex-col m-5 mt-1  justify-center'>
             <p className=' text-lg md:text-2xl lg:text-3xl  md:pb-2  md:pl-2'>{JSON.parse(localStorage.getItem("user")).name}</p>
@@ -40,6 +43,7 @@ function Profile() {
               <p className='text-md md:text-xl m-1 md:m-2'>40 Followers</p>
               <p className='text-md md:text-xl m-1 md:m-2'>40 Following</p>
              </div>
+             <Link to="/pixpulse/updateimage" className='h-10  w-32 bg-pink-500 text-white rounded-xl p-2 m-4'>Update Image</Link>
           </div>
         </div>
 

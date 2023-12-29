@@ -13,8 +13,11 @@ router.get("/", (req, res) => {
 
 router.post("/signup", (req, res) => {
   const { name, email, password,pic } = req.body;
+  console.log(pic)
   if (!name || !email || !password) {
-    return res.status(422).json({ error: "Please fill all the fields" });
+    return res
+    .status(422)
+    .json({ error: "Please fill all the fields" });
   }
 
   // res.json({ message: "saved successfully" });

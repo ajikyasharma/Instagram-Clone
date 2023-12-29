@@ -61,5 +61,15 @@ router.put('/unfollow',requireLogin, async (req,res)=>{
   }
 })
 
+router.put('/updateimage',requireLogin, async(req,res)=>{
+     try{
+      const result= await User.findOneAndUpdate(req.user._id,{$set:{image:req.body.pic}},{new:true})
+       res.json(result)
+     }
+     catch(error){
+      console.log("Error",error)
+     }
+})
+
 
 module.exports= router

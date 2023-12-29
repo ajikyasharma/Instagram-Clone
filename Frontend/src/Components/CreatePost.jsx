@@ -22,6 +22,7 @@ function CreatePost() {
       .then(res=>res.json())
       .then(data=>{
          setUrl(data.url)
+
       })
       .catch(err=>{
         console.log("Error", err)
@@ -68,11 +69,6 @@ function CreatePost() {
  const submitHandler = (e)=>{
   e.preventDefault()
     postDetails()
-
-
-    
-
-
  }
 
 

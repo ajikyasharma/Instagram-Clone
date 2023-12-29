@@ -11,6 +11,7 @@ import Home from './Components/Home.jsx'
 import CreatePost from './Components/CreatePost.jsx'
 import UserProfile from './Components/UserProfile.jsx'
 import FollowingsPost from './Components/FollowingsPost.jsx'
+import UpdateImage from './Components/UpdateImage.jsx'
 
 const router= createBrowserRouter ([
   {
@@ -49,6 +50,10 @@ const router= createBrowserRouter ([
       {
         path:'/pixpulse/userprofile/:userid',
         element: <UserProfile />
+      },
+      {
+        path:'/pixpulse/updateimage',
+        element: <UpdateImage />
       }
     ]
   }

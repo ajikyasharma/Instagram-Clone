@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 function SignUp() {
@@ -12,7 +12,7 @@ function SignUp() {
 
     const navigate= useNavigate()
 
-    const  postDetails = ()=>{
+    const  postDetails =  ()=>{
       const data= new FormData()
       data.append("file", image)
       data.append("upload_preset","instagram-clone")
@@ -22,51 +22,61 @@ function SignUp() {
        body:data
      })
      .then(res=>res.json())
-     .then(data=>{
-      comsole.log(data)
-        setUrl(data.url)
-
-     })
+       .then(data=>{
+     setUrl(data.url)
+   })
      .catch(err=>{
        console.log("Error", err)
      })
-
-
  }
 
-   const submitHandler= (e)=>{
+ const uploadFields =()=>{
+  fetch('http://localhost:3000/signup',{
+    method:"post",
+      headers:{
+         "Content-type":"application/json"
+      },
+      body:JSON.stringify({
+         name,
+         email,
+         password,
+         pic:url
+      })
+   })
+   .then(res=>res.json())
+     .then(data=>{
+        if(data.error)
+          alert(data.error)
+
+       if(data.message){
+           alert(data.message)
+           navigate('/signin')
+       }
+
+     })
+     .catch(err=>{
+        console.log("Error", err)
+     })
+ }
+
+ useEffect(()=>{
+  if(url)
+  {
+    uploadFields()
+  }
+ },[url])
+
+
+
+   const submitHandler=async (e)=>{
          e.preventDefault()
-         if(url == undefined)
-         {
+
+         if(image){
             postDetails()
          }
-         console.log(name, email, password,url)
-         fetch('http://localhost:3000/signup',{
-          method:"post",
-            headers:{
-               "Content-type":"application/json"
-            },
-            body:JSON.stringify({
-               name,
-               email,
-               password,
-               pic:url
-            })
-         })
-         .then(res=>res.json())
-           .then(data=>{
-              if(data.error)
-                alert(data.error)
-
-             if(data.message){
-                 alert(data.message)
-                 navigate('/signin')
-             }
-
-           })
-           .ctach(err=>{
-              console.log("Error", err)
-           })
+         else{
+          uploadFields()
+         }
     }
 
 
@@ -87,7 +97,7 @@ function SignUp() {
               <input type="password" className='w-full border h-10 p-2 my-2 rounded-md outline-none' placeholder='Password' value={password} onChange={(e)=>setPassword(e.target.value)} />
               <br></br>
               <p className='p-2 my-2'>Upload Your Image</p>
-          <label class="block">
+          <label className="block">
             <input
               type="file"
               className="block w-full text-lg text-slate-500
