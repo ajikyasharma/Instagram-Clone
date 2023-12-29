@@ -11,10 +11,6 @@ function UserProfile() {
   const id= JSON.parse(localStorage.getItem("user"))._id
 
 
-
-
-
-
 useEffect(()=>{
      fetch(`http://localhost:3000/user/${userid}`,{
         method:"get",
@@ -89,11 +85,11 @@ const doUnfollow =()=>{
 
   return (  
     <div className='md:container md:mx-auto  px-5 lg:px-10 flex flex-col  items-center'>
-        <div className='flex flex-row m-2 mr-2 '>
+        <div className='flex flex-row m-2 mr-2 mt-3 '>
           <div>
-              <img className='rounded-full h-24 md:h-48  w-24 md:w-48  ' src="https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww" />
+              <img className='rounded-full h-24 md:h-48  w-24 md:w-48 border border-gray-600 p-1 ' src="https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww" />
           </div>
-          <div className='flex flex-col m-5 mt-1  justify-center'>
+          <div className='flex flex-col m-5 mt-5  justify-center'>
             <p className=' text-lg md:text-2xl lg:text-3xl  md:pb-2  md:pl-2'>{name}</p>
              <div className='flex flex-row '>
               <p className='text-md md:text-xl m-1 md:m-2'>{data.length} Posts</p>
@@ -109,7 +105,7 @@ const doUnfollow =()=>{
           </div>
         </div>
 
-        <div className='grid grid-cols-3 gap-4 mt-5'>
+        <div className='grid grid-cols-3 gap-4 mt-5 border-t border-gray-600 py-5'>
 
          {
           data.map((item, idx)=>(

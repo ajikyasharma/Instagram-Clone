@@ -30,8 +30,8 @@ function UpdateImage() {
             })
             .then(res=>res.json())
             .then(result=>{
-                 console.log(result)
                  localStorage.setItem("user",JSON.stringify(result))
+                 alert("Image Updated ")
             })
             .catch(err=>{
              console.log("Error",err)
