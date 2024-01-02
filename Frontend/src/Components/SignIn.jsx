@@ -22,7 +22,9 @@ const navigate= useNavigate()
           })
             .then(res=>res.json())
             .then(data=>{
+                  
                     if(data.error)
+
                       alert(data.error)
 
                    else{
