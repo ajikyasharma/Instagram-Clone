@@ -10,7 +10,7 @@ const navigate= useNavigate()
     const submitHandler = (e)=>{
           e.preventDefault()
 
-          fetch('http://localhost:3000/signin',{
+          fetch('https://instagram-clone-api-gamma.vercel.app/signin',{
             method:"post",
             headers:{
                "Content-type":"application/json"
