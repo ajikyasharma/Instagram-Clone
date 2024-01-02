@@ -9,7 +9,6 @@ const navigate= useNavigate()
 
     const submitHandler = (e)=>{
           e.preventDefault()
-          console.log(email, password)
 
           fetch('http://localhost:3000/signin',{
             method:"post",
@@ -29,6 +28,8 @@ const navigate= useNavigate()
                    else{
                       localStorage.setItem("jwt", data.token)
                       localStorage.setItem("user", JSON.stringify(data.user))
+                      setEmail('')
+                      setPassword('')
                       navigate('/pixpulse/home')
                    }
             })

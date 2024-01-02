@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
 
 router.post("/signup", (req, res) => {
   const { name, email, password,pic } = req.body;
-  console.log(pic)
+
   if (!name || !email || !password) {
     return res
     .status(422)
@@ -38,7 +38,7 @@ router.post("/signup", (req, res) => {
 
         user.save()
           .then((user) => {
-            res.json({ message: "saved successfully" });
+            res.json({ message: "SignUp successfully" });
           })
           .catch((err) => {
             console.log(err);

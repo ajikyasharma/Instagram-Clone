@@ -12,6 +12,7 @@ import CreatePost from './Components/CreatePost.jsx'
 import UserProfile from './Components/UserProfile.jsx'
 import FollowingsPost from './Components/FollowingsPost.jsx'
 import UpdateImage from './Components/UpdateImage.jsx'
+import SearchUser from './Components/SearchUser.jsx'
 
 const router= createBrowserRouter ([
   {
@@ -54,7 +55,12 @@ const router= createBrowserRouter ([
       {
         path:'/pixpulse/updateimage',
         element: <UpdateImage />
-      }
+      },
+      {
+          path:'/pixpulse/searchuser',
+          element: <SearchUser />
+       }
+      
     ]
   }
 ])

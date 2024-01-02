@@ -10,6 +10,7 @@ router.get('/allposts',requireLogin,(req,res)=>{
     Post.find()
     .populate("postedBy","_id name")
     .populate("comments.postedBy","_id name ")
+    .sort('-createdAt')
     .then(posts=>{
         res.json(posts)
     })
@@ -23,6 +24,7 @@ router.get('/followingsposts',requireLogin,(req,res)=>{
     Post.find({postedBy:{$in:req.user.following}})
     .populate("postedBy","_id name")
     .populate("comments.postedBy","_id name ")
+    .sort('-createdAt')
     .then(posts=>{
         res.json(posts)
     })
@@ -33,7 +35,7 @@ router.get('/followingsposts',requireLogin,(req,res)=>{
 
 router.post('/createpost',requireLogin,(req,res)=>{
     const {title,body,pic}= req.body
-    console.log(title, body, pic)
+
     if(! title || ! body || !pic){
         return res.status(422).json({error:"Please fill all the fields"})
     }
