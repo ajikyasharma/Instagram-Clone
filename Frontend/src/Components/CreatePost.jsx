@@ -29,7 +29,7 @@ function CreatePost() {
 
   useEffect(() => {
     if (url) {
-      fetch("http://localhost:3000/createpost", {
+      fetch("https://instagram-clone-api-gamma.vercel.app/createpost", {
         method: "post",
         headers: {
           "Content-Type": "application/json",
