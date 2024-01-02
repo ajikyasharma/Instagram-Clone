@@ -8,7 +8,7 @@ function Profile() {
 
   useEffect(()=>{
   
-    fetch('http://localhost:3000/myposts',{
+    fetch('https://instagram-clone-api-gamma.vercel.app/myposts',{
        headers :{
         "Authorization" :"Bearer "+ localStorage.getItem("jwt"),
         "Content-Type" :"application/json"
