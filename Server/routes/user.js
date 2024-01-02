@@ -20,9 +20,7 @@ router.get('/user/:id',requireLogin, async(req,res)=>{
 
 router.get('/searchuser/:id',requireLogin, async(req,res)=>{
   try{
-    console.log("hello",req.params.id)
     const user= await User.find({"email": req.params.id})
-    console.log(user)
     res.json(user)
   }
   catch(error){

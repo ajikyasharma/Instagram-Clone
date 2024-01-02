@@ -25,7 +25,7 @@ export default function Example() {
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
-                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-pink-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="absolute -inset-0.5" />
                   <span className="sr-only">Open main menu</span>
                   {open ? (
@@ -207,7 +207,21 @@ export default function Example() {
                <p>Following's Post</p>
               </div>
         </NavLink>
-
+                
+        <NavLink to="/pixpulse/searchuser"
+             className={({ isActive }) =>
+               `  ${
+                  isActive
+                   ? ' text-pink-500  text-md font-medium h-12 mt-1'
+                    : 'text-pink-300 text-md font-medium h-12 mt-1 '
+                
+                   }`
+                }
+             >
+             <div className={`py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors`}>
+               <p>Search</p>
+              </div>
+        </NavLink>
 
         <NavLink  onClick={()=>{
              localStorage.clear()

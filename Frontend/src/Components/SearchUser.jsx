@@ -27,9 +27,11 @@ function SearchUser() {
         .then(result=>{
            if(result.length == 0)
            {
-            alert("No User exist with this email id")
+            alert("No User Exist with this Email")
+            setEmail('')
            }
            else{
+            setEmail('')
             navigate('/pixpulse/userprofile/'+result[0]._id)
            }
         })

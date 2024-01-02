@@ -5,10 +5,13 @@ function UserProfile() {
    
   const [data, setData]= useState([])
   const [name,setName] = useState('')
+  const [image, setImage]= useState('')
   const [followers, setFollowers]= useState([])
   const [followings,setFollowings]= useState([])
   const {userid} = useParams()
   const id= JSON.parse(localStorage.getItem("user"))._id
+
+  
 
 
 useEffect(()=>{
@@ -21,20 +24,17 @@ useEffect(()=>{
      })
      .then(res=>res.json())
      .then(result =>{
-        
+      
         setData(result.posts)
         setName(result.user.name)
+        setImage(result.user.image)
         setFollowers(result.user.followers)
-        console.log(followers)
         setFollowings(result.user.following)
-  
-
-        
      })
      .catch(err=>{
         console.log("Error", err)
      })
-},[name])
+},[])
 
 const doFollow =()=>{
     fetch('http://localhost:3000/follow',{
@@ -87,7 +87,7 @@ const doUnfollow =()=>{
     <div className='md:container md:mx-auto  px-5 lg:px-10 flex flex-col  items-center'>
         <div className='flex flex-row m-2 mr-2 mt-3 '>
           <div>
-              <img className='rounded-full h-24 md:h-48  w-24 md:w-48 border border-gray-600 p-1 ' src="https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww" />
+              <img className='rounded-full h-24 md:h-48  w-24 md:w-48 border border-gray-600 p-1 ' src={image} />
           </div>
           <div className='flex flex-col m-5 mt-5  justify-center'>
             <p className=' text-lg md:text-2xl lg:text-3xl  md:pb-2  md:pl-2'>{name}</p>

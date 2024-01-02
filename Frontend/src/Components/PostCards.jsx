@@ -107,7 +107,7 @@ function PostCards({item ,data, setData}) {
 
 
   return (
-    <div className=' h-full mx-5  border-2 p-3 pb-5 my-5'>
+    <div className=' h-full   border-2 p-3 pb-5 my-5'>
       <div className='flex flex-row justify-between'>
       <Link to={ item.postedBy._id != user_id ?'/pixpulse/userprofile/'+item.postedBy._id:'/pixpulse/profile'} className='my-2  text-2xl'>{item.postedBy.name}</Link>
     { item.postedBy._id == user_id  ?   <TrashIcon  className='h-10 w-10 pl-2 cursor-pointer' onClick={()=>deletePost()}/>  : ''}
