@@ -30,9 +30,14 @@ require('./models/post')
 
 app.use(cors(
     {
-        origin: {"https://pixpulse-delta.vercel.app"},
-        method: {"POST", "GET", "PUT"},
-        credentials: true
+        // origin: {"https://pixpulse-delta.vercel.app"},
+        // method: {"POST", "GET", "PUT"},
+        // credentials: true
+        x =>x
+                            .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .SetIsOriginAllowed(origin => true) // allow any origin
+                    .AllowCredentials()); // allow credentials
     }
 ));
 app.use(express.json())
