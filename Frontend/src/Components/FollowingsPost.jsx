@@ -7,7 +7,7 @@ function FollowingsPost() {
 
   useEffect(()=>{
      
-    fetch('http://localhost:3000/followingsposts',{
+    fetch('https://instagram-clone-api-gamma.vercel.app/followingsposts',{
        headers :{
         "Authorization" :"Bearer "+ localStorage.getItem("jwt"),
         "Content-Type" :"application/json"
