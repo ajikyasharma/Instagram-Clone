@@ -16,7 +16,7 @@ function SearchUser() {
     const submitHandler= (e)=>{
         e.preventDefault()
    
-        fetch(`http://localhost:3000/searchuser/${email}`,{
+        fetch(`https://instagram-clone-api-gamma.vercel.app/searchuser/${email}`,{
            method:"get",
                headers:{
                    "Content-type": "application/json",
