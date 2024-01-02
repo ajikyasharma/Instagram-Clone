@@ -15,7 +15,7 @@ function PostCards({item ,data, setData}) {
        
 
        const likePost =(id)=>{
-           fetch('http://localhost:3000/like', {
+           fetch('https://instagram-clone-api-gamma.vercel.app/like', {
               method:"put",
               headers:{
                 "Authorization" :"Bearer "+ localStorage.getItem("jwt"),
@@ -35,7 +35,7 @@ function PostCards({item ,data, setData}) {
 
 
        const unLikePost =(id)=>{
-        fetch('http://localhost:3000/unlike', {
+        fetch('https://instagram-clone-api-gamma.vercel.app/unlike', {
            method:"put",
            headers:{
              "Authorization" :"Bearer "+ localStorage.getItem("jwt"),
@@ -57,7 +57,7 @@ function PostCards({item ,data, setData}) {
     const doComment =(e)=>{
       e.preventDefault()
       console.log('hi')
-      fetch('http://localhost:3000/comment',{
+      fetch('https://instagram-clone-api-gamma.vercel.app/comment',{
         method:"put",
         headers:{
           "Authorization" :"Bearer "+ localStorage.getItem("jwt"),
@@ -81,7 +81,7 @@ function PostCards({item ,data, setData}) {
 
     const deletePost =()=>{
       console.log("hi")
-        fetch(`http://localhost:3000/deletepost/${item._id}`,{
+        fetch(`https://instagram-clone-api-gamma.vercel.app/deletepost/${item._id}`,{
           method:"delete",
           headers:{
             "Authorization": "Bearer "+localStorage.getItem("jwt")
