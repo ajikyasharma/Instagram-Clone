@@ -21,14 +21,13 @@ mongoose.connection.on('error',(err)=>{
 })
 
 
-// password-yO7lOmaRAIcRyXqH
-//username-ajikyasharma24
+
 
 require('./models/user')
 require('./models/post')
 
 
-app.use(cors())
+
 app.use(cors(
     {
         origin: {"https://pixpulse-delta.vercel.app"},
