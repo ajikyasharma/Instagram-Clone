@@ -27,7 +27,7 @@ require('./models/user')
 require('./models/post')
 
 
-app.use(cors())
+app.options('*', cors());
 // app.use(cors(
 //     {
 //         origin: {"https://pixpulse-delta.vercel.app"},
@@ -42,12 +42,12 @@ app.use(cors())
 //         "Access-Control-Allow-Methods",
 //         "OPTIONS, GET, POST, PUT, PATCH, DELETE"
 //       );
-      res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-      if (req.method === "OPTIONS") {
-        return res.sendStatus(200);
-      }
-      next();
-    });
+    //   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    //   if (req.method === "OPTIONS") {
+    //     return res.sendStatus(200);
+    //   }
+    //   next();
+    // });
 app.use(express.json())
 
 app.use(require('./routes/auth'))
