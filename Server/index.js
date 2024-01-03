@@ -26,18 +26,14 @@ mongoose.connection.on('error',(err)=>{
 require('./models/user')
 require('./models/post')
 
-const options = [
-  cors({
-    origin: '*',
-    methods: '*',
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
-  })
-];
+app.use(cors({
+  origin: '*', // Change this to your front-end URL in production for security
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify the allowed HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Specify the allowed headers
+  credentials: true, // Allow session cookies and other credentials to be sent along with the request
+}));
 
-app.use(options);
-
-app.use(express.json())
+app.use(express.json());
 
 app.use(require('./routes/auth'))
 app.use(require('./routes/post'))
