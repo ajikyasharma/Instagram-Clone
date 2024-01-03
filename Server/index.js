@@ -26,21 +26,17 @@ mongoose.connection.on('error',(err)=>{
 require('./models/user')
 require('./models/post')
 
+const options = [
+  cors({
+    origin: '*',
+    methods: '*',
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+  })
+];
 
-app.options('*', cors());
+app.use(options);
 
-app.use(bodyParser.json()); 
-app.use((res, req, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader(
-        'Access-Control-Allow-Headers',
-        'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-    );
-    res.setHeader('Access-Control-Allow-Methods','GET, POST, PATCH, DELETE');
-
-    next();
-});
-app.use(cors());
 app.use(express.json())
 
 app.use(require('./routes/auth'))
