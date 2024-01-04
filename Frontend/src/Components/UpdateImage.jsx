@@ -18,7 +18,7 @@ function UpdateImage() {
        .then(res=>res.json())
        .then(data=>{
           console.log(data.url)
-            fetch('http://localhost:3000/updateimage',{
+            fetch('https://instagram-clone-api-gamma.vercel.app/updateimage',{
                 method:"put",
                 headers:{
                     "Content-type":"application/json",

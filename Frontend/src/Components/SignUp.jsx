@@ -30,7 +30,7 @@ function SignUp() {
   };
 
   const uploadFields = () => {
-    fetch("http://localhost:3000/signup", {
+    fetch("https://instagram-clone-api-gamma.vercel.app/signup", {
       method: "post",
       headers: {
         "Content-type": "application/json",

@@ -15,7 +15,7 @@ function UserProfile() {
 
 
 useEffect(()=>{
-     fetch(`http://localhost:3000/user/${userid}`,{
+     fetch(`https://instagram-clone-api-gamma.vercel.app/user/${userid}`,{
         method:"get",
         headers:{
             "Content-type": "application/json",
@@ -37,7 +37,7 @@ useEffect(()=>{
 },[])
 
 const doFollow =()=>{
-    fetch('http://localhost:3000/follow',{
+    fetch('https://instagram-clone-api-gamma.vercel.app/follow',{
       method:"put",
       headers:{
         "Content-Type":"application/json",
@@ -59,7 +59,7 @@ const doFollow =()=>{
 }
 
 const doUnfollow =()=>{
-    fetch('http://localhost:3000/unfollow',{
+    fetch('https://instagram-clone-api-gamma.vercel.app/unfollow',{
       method:"put",
       headers:{
         "Content-Type":"application/json",
